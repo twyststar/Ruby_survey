@@ -1,0 +1,22 @@
+<div class="well">
+  <h4>Current question text to edit "<%= @question.q_text() %>"</h4>
+  <form class="horizontal-inline" action="/surveys/<%= @survey.id()%>/questions/<%= @question.id() %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <label for="q_text">Question Text:</label>
+    <input type="text" id="q_text" name="q_text">
+    <button type="submit" name="button">Submit</button>
+  </form>
+
+</div>
+
+<div class="well">
+  <form class="horizontal-inline" action="/surveys/<%= @survey.id()%>/questions/<%= @question.id() %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit" name="button">Delete Question</button>
+  </form>
+
+</div>
+
+<p>
+  <a href="/">Back to Home</a>
+</p>

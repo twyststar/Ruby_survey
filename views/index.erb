@@ -1,0 +1,19 @@
+<% if @surveys.any? %>
+  <h3>To add questions to a survey click on the survey you want to edit.</h3>
+  <ul>
+    <% @surveys.each() do |survey| %>
+    <li><a href="/surveys/<%= survey.id()%>/questions"><%= survey.name() %></a></li>
+    <% end %>
+  </ul>
+
+<% else %>
+
+<% end %>
+<div class="well">
+  <h2>Survey</h2>
+  <form class="" action="/surveys" method="post">
+    <label for="survey_name"></label>
+    <input type="text" id="survey_name" name="survey_name" value="">
+    <button type="submit" name="button">Submit</button>
+  </form>
+</div>

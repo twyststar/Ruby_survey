@@ -1,0 +1,41 @@
+<% if @survey.questions().any? %>
+  <div class="well">
+    <h3>Questions associated with <%= @survey.name() %>:</h3>
+    <ul>
+      <% @survey.questions().each() do |question|%>
+
+      <li><a href="/surveys/<%= @survey.id()%>/questions/<%= question.id()%>/edit"><%= question.q_text() %></a></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="well">
+  <h2>Questions for <%= @survey.name() %></h2>
+  <form class="horizontal-inline" action="/surveys/<%= @survey.id()%>/questions" method="post">
+    <label for="q_text">Enter your question here:</label>
+    <input type="text" id="q_text" name="q_text">
+    <input type="hidden" name="survey_id" value="<%=@survey.id()%>">
+    <button type="submit" name="button">Add Question</button>
+  </form>
+</div>
+
+<div class="well">
+  <h2>Edit survey name:</h2>
+  <form class="horizontal-inline" action="/surveys/<%= @survey.id()%>/questions" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <label for="name">Enter new survey name:</label>
+    <input type="text" id="name" name="name">
+    <button type="submit" name="button">Change Name</button>
+  </form>
+</div>
+
+<div class="well">
+  <form class="horizontal-inline" action="/surveys/<%= @survey.id()%>/questions" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit" name="button">Delete Survey</button>
+  </form>
+
+</div>
+<p>
+  <a href="/">Back to Home</a>
+</p>
